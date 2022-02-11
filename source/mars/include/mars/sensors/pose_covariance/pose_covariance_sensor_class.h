@@ -147,10 +147,10 @@ public:
     PoseCovarianceSensorStateType prior_sensor_state(prior_sensor_data->state_);
 
     // Generate measurement noise matrix
-    const Eigen::Matrix<double, 6, 6> R_meas = this->R_.asDiagonal();
-    //const Eigen::Matrix<double, 6, 6> R_meas = meas->covariance_;
-    std::cout << "pose covariance sensor class, calc update()" << std::endl;
-    std::cout << "Meas covariance: " << meas->covariance_(0,0) << ", " << meas->covariance_(5,0) << ", " << meas->covariance_(5,5) << std::endl;
+    //const Eigen::Matrix<double, 6, 6> R_meas = this->R_.asDiagonal();
+    const Eigen::Matrix<double, 6, 6> R_meas = meas->covariance_;
+    //std::cout << "pose covariance sensor class, calc update()" << std::endl;
+    //std::cout << "Meas covariance: " << meas->covariance_(0,0) << ", " << meas->covariance_(5,0) << ", " << meas->covariance_(5,5) << std::endl;
 
     const int size_of_core_state = CoreStateType::size_error_;
     const int size_of_sensor_state = prior_sensor_state.cov_size_;
